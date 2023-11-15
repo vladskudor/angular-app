@@ -1,0 +1,14 @@
+@import "components/global-style/global-style";
+
+.app-content{
+  //margin: 150px 0 0 0;
+}
+
+
+.error-block{
+  position: fixed;
+  top: 50vh;
+  color: red;
+  background: white;
+  z-index: 1;
+}

@@ -1,0 +1,88 @@
+<app-menu></app-menu>
+
+<div class="nav-to-main">
+  <button (click)="svc.navigateTo('/main')">
+    back
+  </button>
+</div>
+
+<div class="content-compare">
+<!--  <div>-->
+<!--    <h1>compare</h1>-->
+<!--  </div>-->
+
+  <div class="compare-block">
+    <div class="car1">
+      <div class="car1-data" *ngFor="let car of car1">
+        <div class="car1-name">
+          <img *ngIf="car.logo" #img1 (click)="openImg1(img1)" src="{{car.logo}}" alt="">
+          <img *ngIf="!car.logo" #img1 (click)="openImg1(img1)" src="./assets/images/car.png" alt="">
+          <span (click)="closeImg1()" style="color: red" *ngIf="activeImg1">
+            x
+          </span>
+        </div>
+        <div class="car1-model">
+          <b>model - </b><em>{{car.model}}</em>
+        </div>
+        <div class="car1-gear">
+          <b>gear - </b><em>{{car.gear}}</em>
+        </div>
+        <div class="car1-motor"
+             [ngStyle]="{outline: carMotor1 > carMotor2 ? '0 7px 0 0 solid green' : '0 3px 0 0 solid red' , borderBottom: carMotor1 > carMotor2 ? '7px solid green' : '3px solid red'}">
+          <b>motor - </b><em>{{car.motor}}</em>
+        </div>
+        <div class="car1-acceleration"
+             [ngStyle]="{outline: carAcceleration1 < carAcceleration2 ? '0 7px 0 0 solid green' : '0 3px 0 0 solid red' , borderBottom: carAcceleration1 < carAcceleration2 ? '7px solid green' : '3px solid red'}">
+          <b>acceleration - </b><em>{{car.acceleration}}</em>
+        </div>
+        <div class="car1-acceleration"
+             [ngStyle]="{outline: carSpeed1 > carSpeed2 ? '0 7px 0 0 solid green' : '0 3px 0 0 solid red' , borderBottom: carSpeed1 > carSpeed2 ? '7px solid green' : '3px solid red'}">
+          <b>speed - </b><em>{{car.speed}}</em>
+        </div>
+        <div class="car1-horsepower"
+             [ngStyle]="{outline: carHorsePower1 > carHorsePower2 ? '0 7px 0 0 solid green' : '0 3px 0 0 solid red' , borderBottom: carHorsePower1 > carHorsePower2 ? '7px solid green' : '3px solid red'}">
+          <b>horse-power - </b><em>{{car.horsePower}}</em>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="car2">
+      <div class="car2-data" *ngFor="let car of car2">
+        <div class="car2-name">
+          <img *ngIf="car.logo" #img2 (click)="openImg2(img2)" src="{{car.logo}}" alt="">
+          <img *ngIf="!car.logo" #img2 (click)="openImg2(img2)" src="./assets/images/car.png" alt="">
+          <span (click)="closeImg2()" style="color: red" *ngIf="activeImg2">
+            x
+          </span>
+        </div>
+        <div class="car2-model">
+          <b>model - </b><em>{{car.model}}</em>
+        </div>
+        <div class="car2-gear">
+          <b>gear - </b><em>{{car.gear}}</em>
+        </div>
+        <div #motor class="car2-motor"
+             [ngStyle]="{outline: carMotor2 > carMotor1 ? '0 7px 0 0 solid green' : '0 3px 0 0 solid red' , borderBottom: carMotor2 > carMotor1 ? '7px solid green' : '3px solid red'}">
+          <b>motor - </b><em>{{car.motor}}</em>
+        </div>
+        <div class="car2-acceleration"
+             [ngStyle]="{outline: carAcceleration2 < carAcceleration1 ? '0 7px 0 0 solid green' : '0 3px 0 0 solid red' , borderBottom: carAcceleration2 < carAcceleration1 ? '7px solid green' : '3px solid red'}">
+          <b>acceleration - </b><em>{{car.acceleration}}</em>
+        </div>
+        <div class="car2-acceleration"
+             [ngStyle]="{outline: carSpeed2 > carSpeed1 ? '0 7px 0 0 solid green' : '0 3px 0 0 solid red' , borderBottom: carSpeed2 > carSpeed1 ? '7px solid green' : '3px solid red'}">
+          <b>speed - </b><em>{{car.speed}}</em>
+        </div>
+        <div class="car2-horsepower"
+             [ngStyle]="{outline: carHorsePower2 > carHorsePower1 ? '0 7px 0 0 solid green' : '0 3px 0 0 solid red' , borderBottom: carHorsePower2 > carHorsePower1 ? '7px solid green' : '3px solid red'}">
+          <b>horse-power - </b><em>{{car.horsePower}}</em>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <button (click)="svc.playGame()">test drive</button>
+  </div>
+</div>

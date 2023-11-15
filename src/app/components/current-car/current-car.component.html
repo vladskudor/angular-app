@@ -1,0 +1,44 @@
+<app-menu></app-menu>
+
+<div class="nav-to-main">
+  <button (click)="svc.navigateTo('/main')">
+    back
+  </button>
+</div>
+
+<div class="motors">
+  <div class="block-form-motor">
+    <form class="form-motor-choose">
+      <div>
+        <label for="motor-input">
+          <input appDirective id="motor-input" type="number" minlength="2" list="data-motors" placeholder="choose motor" [formControl]="svc.formControlMotor">
+            <datalist id="data-motors">
+              <option *ngFor="let motorCar of svc.motors">{{motorCar.motor}}</option>
+            </datalist>
+        </label>
+      </div>
+      <div>
+        <label for="motor-input">
+          <input appDirective id="motor-input" type="number" minlength="2" placeholder="s acceleration" [formControl]="svc.formControlAccelereation">
+        </label>
+      </div>
+      <div>
+        <label for="motor-input">
+          <input appDirective id="motor-input" type="number" minlength="2" placeholder="max speed" [formControl]="svc.formControlSpeed">
+        </label>
+      </div>
+      <div>
+        <label for="motor-input">
+          <input appDirective id="motor-input" type="number" minlength="2" placeholder="horse power" [formControl]="svc.formControlHorsePower">
+        </label>
+      </div>
+    </form>
+    <div class="block-button">
+      <button (click)="svc.getMotorsOfCars()">
+        next
+      </button>
+    </div>
+  </div>
+</div>
+
+

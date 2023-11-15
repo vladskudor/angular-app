@@ -1,0 +1,40 @@
+<app-menu></app-menu>
+<div class="admin-panel-main-block">
+    <div>
+        <h1>users</h1>
+    </div>
+
+    <div class="admin-panel-block-users">
+        <div class="block-user" *ngFor="let user of svc.users;let index = index">
+            <h2>
+                <b>user</b> 
+                {{index + 1}}
+            </h2>
+            Email: 
+            <p>
+                {{user.email}} 
+            </p>   
+            Password:  
+            <p>
+                {{user.password}} 
+            </p>   
+            Ip:
+            <p>
+                {{user.ip | json}} 
+            </p>  
+            Messages: 
+            <p>
+                {{user.messages | json}} 
+            </p>   
+            Time auth
+            <p>
+                {{user.timeAuth}} 
+            </p>  
+            ID: 
+            <p>
+                {{user.id}} 
+            </p>   
+        </div>
+    </div>
+</div>
+   

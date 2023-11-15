@@ -1,0 +1,13 @@
+<div class="error-block-notification">
+  <div (click)="svc.error = false" class="block-close-error">
+    x
+  </div>
+  <div class="error-title">
+    <h1>error</h1>
+  </div>
+  <div class="error-description">
+    <p>
+      {{svc.error.statusText | json}}
+    </p>
+  </div>
+</div>

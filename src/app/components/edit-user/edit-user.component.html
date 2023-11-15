@@ -1,0 +1,26 @@
+<app-menu></app-menu>
+<div class="main-block-edit-user">
+  <div class="header-user">
+    <h1>edit user</h1>
+  </div>
+
+  <div class="edit-user">
+    <div>
+      <b>id <i style="color: #fff">{{svc.user.id || svc.user._id}}</i></b>
+    </div>
+    <div>
+      <b>email</b>
+      <input type="text" [(ngModel)]="svc.user.email" class="input">
+    </div>
+    <div style="border-bottom: 0">
+      <b>password</b>
+      <input type="password" [(ngModel)]="svc.user.password"  class="input">
+    </div>
+  </div>
+
+  <div class="edit-button">
+    <button (click)="svc.saveChangesOfUser()">
+      save
+    </button>
+  </div>
+</div>

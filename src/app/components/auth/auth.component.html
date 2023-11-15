@@ -1,0 +1,91 @@
+<app-menu>
+  <div class="block-menu-button" *ngIf="!svc.user">
+    <div>
+      <button id="button-log-auth" (click)="router.navigate(['/megane'])">
+        about
+      </button>
+    </div>
+    <div>
+      <button id="button-log-auth" (click)="router.navigate(['/auth'])">
+        signup
+      </button>
+    </div>
+    <div>
+      <button id="button-log-auth" (click)="router.navigate(['/login'])">
+        log in
+      </button>
+    </div>
+  </div>
+</app-menu>
+
+<div class="content">
+  <div class="header">
+    <p>signup</p>
+  </div>
+  <table>
+    <tbody>
+    <div *ngFor="let user of users">
+      <ng-template [ngTemplateOutlet]="loadTemplate(user)" [ngTemplateOutletContext]="{ $implicit: user}"></ng-template>
+    </div>
+    </tbody>
+  </table>
+
+  <form method="post" class="content-form">
+    <div>
+      <div>
+        <input id="input-id" type="number" [(ngModel)]="editedUser._id" />
+      </div>
+<!--      <div>-->
+<!--        <div>-->
+<!--          <input name="email" type="email" [formControl]="svc.formControlLogin" id="login" placeholder="Email" required [ngStyle]="{border: svc.formControlLogin.invalid && svc.login.length > 0 ? '2px solid red' : 'none'}">-->
+<!--        </div>-->
+<!--        <div class="invalid-form" *ngIf="svc.formControlLogin.invalid && svc.login.length > 0">-->
+<!--          Invalid email-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div>-->
+<!--        <div>-->
+<!--          <input name="password" [formControl]="svc.formControlPassword" type="password" id="password" placeholder="Password" required [ngStyle]="{border: svc.formControlPassword.invalid && svc.password.length > 0 ? '2px solid red' : 'none'}">-->
+<!--        </div>-->
+<!--        <div class="invalid-form" *ngIf="svc.formControlPassword.invalid && svc.password.length > 0">-->
+<!--          Invalid password-->
+<!--        </div>-->
+<!--      </div>-->
+
+      <div>
+        <input type="email" placeholder="Email" [(ngModel)]="editedUser.email" [formControl]="svc.formControlLogin" />
+        <div class="invalid-form" *ngIf="svc.formControlLogin.invalid && svc.login.length > 0">
+          Invalid email
+        </div>
+      </div>
+      <div>
+        <div class="block-password">
+          <input [type]="passwordVisibility ? 'password' : 'text'" placeholder="Password" [(ngModel)]="editedUser.password" [formControl]="svc.formControlPassword" />
+          <button (click)="passwordVisibility = !passwordVisibility">(O)</button>
+        </div>
+        <div class="invalid-form" *ngIf="svc.formControlPassword.invalid && svc.password.length > 0">
+          Invalid password
+        </div>
+      </div>
+
+<!--      <div>-->
+<!--        <input type="file" #fileImg id="file-inp" (change)="svc.handleFileInput($event.target.files)">-->
+<!--      </div>-->
+
+      <div *ngIf="svc.img">
+        <img id="imgUpload" [src]="svc.img" width="100" height="100" alt="" />
+      </div>
+
+      <div class="auth-button">
+<!--        <button (click)="saveUser(fileImg.files[0]);svc.authSent()">-->
+<!--          signup-->
+<!--        </button>-->
+
+        <button (click)="saveUser();svc.authSent()">
+          signup
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+

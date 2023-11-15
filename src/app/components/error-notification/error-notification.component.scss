@@ -1,0 +1,18 @@
+@import "../global-style/global-style";
+
+.error-block-notification{
+  color: red;
+  background: #000;
+  z-index: 0;
+  text-transform: uppercase;
+  text-align: center;
+  border: 2px solid $red;
+  border-radius: $border-radius;
+  padding: 1%;
+}
+
+.block-close-error{
+  cursor: pointer;
+  float: right;
+  margin-right: 1%;
+}

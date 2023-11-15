@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\components",
+    "\\src\\app\\components\\error-notification",
+    "\\src\\app\\components\\main",
+    "\\src\\app\\components\\service"
+  ],
+  "PreviewInSolutionExplorer": false
+}
