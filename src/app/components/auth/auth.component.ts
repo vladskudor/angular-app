@@ -14,6 +14,7 @@ import {DomSanitizer} from '@angular/platform-browser';
   providers: [UserService]
 })
 export class AuthComponent implements OnInit {
+  animation: any;
   @ViewChild('readOnlyTemplate', {static: false}) readOnlyTemplate: TemplateRef<any>|undefined;
   @ViewChild('editTemplate', {static: false}) editTemplate: TemplateRef<any>|undefined;
   editedUser: User|null = null;
@@ -56,6 +57,7 @@ export class AuthComponent implements OnInit {
       return this.readOnlyTemplate;
     }
   }
+  
   saveUser(): void{
     // file: FileList - argument
     // const urlToBlob = window.URL.createObjectURL(file);

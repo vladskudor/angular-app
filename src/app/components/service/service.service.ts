@@ -250,7 +250,7 @@ export class ServiceService {
     this.router.navigate(['/main' , this.login , this.password]);
   }
 
-  
+
   public saveChangesOfUser(): void {
     localStorage.setItem('user', JSON.stringify(this.user));
     /*this.users.forEach((curEditUser) => {
