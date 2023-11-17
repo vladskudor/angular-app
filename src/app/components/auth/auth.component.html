@@ -53,17 +53,17 @@
 <!--      </div>-->
 
       <div>
-        <input placeholder="Email" [(ngModel)]="editedUser.email"  [formControl]="svc.formControlLogin" />
+        <input [ngStyle]="{animation: inputInvalid ? 'shake 300ms' : 'none'}" placeholder="Email" [(ngModel)]="editedUser.email" [formControl]="svc.formControlLogin" />
         <div class="invalid-form" *ngIf="svc.formControlLogin.invalid && svc.login.length > 7">
-          Invalid email
+          Add @gmail.com
         </div>
       </div>
       <div>
         <div class="block-password">
-          <input [type]="passwordVisibility ? 'password' : 'text'" placeholder="Password" [(ngModel)]="editedUser.password" [formControl]="svc.formControlPassword" />
+          <input [ngStyle]="{animation: inputInvalid ? 'shake 300ms' : 'none'}"  [type]="passwordVisibility ? 'password' : 'text'" placeholder="Password" [(ngModel)]="editedUser.password" [formControl]="svc.formControlPassword" />
           <button style="outline: none;border-radius: 0 10px 10px 0" (click)="passwordVisibility = !passwordVisibility">(O)</button>
         </div>
-        <div class="invalid-form" *ngIf="svc.formControlPassword.invalid && svc.password.length > 0">
+        <div class="invalid-form" *ngIf="svc.formControlPassword.invalid && svc.password.length > 7">
           Invalid password
         </div>
       </div>
@@ -81,7 +81,7 @@
 <!--          signup-->
 <!--        </button>-->
 
-        <button (click)="saveUser();svc.authSent()">
+        <button (click)="checkInput();svc.authSent()">
           signup
         </button>
       </div>

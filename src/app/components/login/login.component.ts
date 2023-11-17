@@ -9,6 +9,7 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  inputInvalid: boolean = false;
   passwordVisibility: boolean = false;
 
   user: any;
@@ -24,5 +25,11 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/main' , this.svc.user.email , this.svc.user.password]);
     }
     // this.http.get('https://api.github.com/search/users').subscribe(data => console.log(data));
+  }
+  checkInput() {
+    if(this.svc.formControlLogin.invalid || this.svc.formControlPassword) {
+      this.inputInvalid = true;
+      setTimeout(() => this.inputInvalid = false , 300)
+    }
   }
 }

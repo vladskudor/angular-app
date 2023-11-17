@@ -36,13 +36,3 @@ input{
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
-
-input:invalid {
-  animation: shake 300ms;
-}
-
-@keyframes shake {
-  25% { transform: translateX(10px); background: $red}
-  50% { transform: translateX(-10px); background: $red}
-  75% { transform: translateX(10px); background: $red}
-}

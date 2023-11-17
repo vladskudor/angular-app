@@ -46,6 +46,12 @@
   }
 }
 
+@keyframes shake {
+  25% { transform: translateX(10px); background: $red}
+  50% { transform: translateX(-10px); background: $red}
+  75% { transform: translateX(10px); background: $red}
+}
+
 .header{
   color: $white;
   //width: 500px;

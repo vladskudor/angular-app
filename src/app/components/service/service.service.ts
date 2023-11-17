@@ -193,12 +193,12 @@ export class ServiceService {
     }
 
     if (this.login === '') {
-      alert('Fill in the input field');
+      // alert('Fill in the input field');
       return;
     }
 
     if (this.formControlLogin.invalid || this.formControlPassword.invalid) {
-      alert('Form invalid');
+      // alert('Form invalid');
       return;
     }
     let users = JSON.parse(localStorage.getItem('users'));

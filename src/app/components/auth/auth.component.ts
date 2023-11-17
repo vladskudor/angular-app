@@ -1,5 +1,5 @@
 import {TemplateRef, ViewChild} from '@angular/core';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , DoCheck } from '@angular/core';
 import {Router} from '@angular/router';
 import {ServiceService} from '../service/service.service';
 import {User} from '../user';
@@ -13,8 +13,8 @@ import {DomSanitizer} from '@angular/platform-browser';
   styleUrls: ['./auth.component.scss'],
   providers: [UserService]
 })
-export class AuthComponent implements OnInit {
-  animation: any;
+export class AuthComponent implements OnInit , DoCheck{
+  inputInvalid: boolean = false;
   @ViewChild('readOnlyTemplate', {static: false}) readOnlyTemplate: TemplateRef<any>|undefined;
   @ViewChild('editTemplate', {static: false}) editTemplate: TemplateRef<any>|undefined;
   editedUser: User|null = null;
@@ -35,6 +35,17 @@ export class AuthComponent implements OnInit {
     this.addUser();
     this.svc.enterData();
 
+  }
+
+  ngDoCheck(): void{
+    // this.inputInvalid = this.checkInput();
+  }
+
+  checkInput() {
+    if(this.svc.formControlLogin.invalid || this.svc.formControlPassword) {
+      this.inputInvalid = true;
+      setTimeout(() => this.inputInvalid = false , 300)
+    }
   }
 
   private loadUsers(): void{
@@ -63,8 +74,34 @@ export class AuthComponent implements OnInit {
     // const urlToBlob = window.URL.createObjectURL(file);
     // this.img = this.sanitize.bypassSecurityTrustUrl(urlToBlob);
     // this.editedUser.img = this.img;
+
+    this.users.some((someUser) => {
+      if (this.svc.login === someUser.email) {
+        this.svc.userExist = true;
+        return;
+      }
+      if (this.svc.login === someUser.email) {
+        this.svc.userExist = false;
+      }
+    });
+
+    if (this.svc.userExist) {
+      window.location.reload();
+      return;
+    }
+
+    if (this.svc.login === '' || this.svc.password === '') {
+      alert('Fill in the input field');
+      return;
+    }
+
+    if (this.svc.formControlLogin.invalid || this.svc.formControlPassword.invalid) {
+      alert('Form invalid');
+      return;
+    }
     localStorage.setItem('user', JSON.stringify(this.editedUser));
     this.router.navigate(['/main', this.editedUser.email, this.editedUser.password]);
+
     if (this.isNewRecord) {
       this.serv.createUser(this.editedUser as User).subscribe(data => {
         this.loadUsers();
